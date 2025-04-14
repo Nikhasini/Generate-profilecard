@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Profile Card Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background: #f0f2f5;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+      margin: 0 auto 2rem auto;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, textarea {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 0.7rem;
+      background: #005792;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .card {
+      text-align: center;
+      background: white;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>User Profile Card Generator</h1>
+  <form id="profileForm">
+    <input type="text" id="name" placeholder="Full Name" required />
+    <textarea id="bio" placeholder="Short Bio" required></textarea>
+    <input type="url" id="avatar" placeholder="Image URL" required />
+    <button type="submit">Generate Card</button>
+  </form>  <div id="profileCard"></div>  <script>
+    const form = document.getElementById("profileForm");
+    const cardContainer = document.getElementById("profileCard");
+
+    form.onsubmit = function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const bio = document.getElementById("bio").value;
+      const avatar = document.getElementById("avatar").value;
+
+      const cardHTML = `
+        <div class="card">
+          <img src="${avatar}" alt="Avatar" />
+          <h2>${name}</h2>
+          <p>${bio}</p>
+        </div>
+      `;
+
+      cardContainer.innerHTML = cardHTML;
+    };
+  </script></body>
+</html>
